@@ -204,3 +204,38 @@ button:hover{
     h1{font-size:36px;}
     .panel{padding:25px;}
 }
+/* =========================
+   CINEMATIC SCREEN FADE
+========================= */
+
+.screen{
+    opacity:0;
+    pointer-events:none;
+    transform:scale(1.02);
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+.screen.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:scale(1);
+}
+
+/* soft glow pulse on title */
+.titlePanel h1{
+    animation:glow 3s ease-in-out infinite;
+}
+
+@keyframes glow{
+    0%,100%{
+        text-shadow:0 0 10px rgba(255,233,166,.2);
+    }
+    50%{
+        text-shadow:0 0 25px rgba(255,233,166,.6);
+    }
+}
+
+/* button press feel */
+button:active{
+    transform:scale(.97);
+}
