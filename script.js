@@ -23,8 +23,17 @@ const screens = {
 };
 
 function showScreen(screen) {
-    Object.values(screens).forEach(s => s.classList.remove("active"));
-    screen.classList.add("active");
+
+    // fade out all screens first
+    Object.values(screens).forEach(s => {
+        s.classList.remove("active");
+    });
+
+    // small delay makes it feel like a scene transition
+    setTimeout(() => {
+        screen.classList.add("active");
+    }, 150);
+}
 }
 
 // -------------------------
