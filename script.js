@@ -1,154 +1,156 @@
-// =====================================
-// The Forgotten Birthday
-// Adventure Logic
-// =====================================
+// =========================================
+// THE FORGOTTEN BIRTHDAY
+// GAME LOGIC OVERHAUL
+// =========================================
 
 const state = {
     meal: "",
     activity: ""
 };
 
-// ----------------------------
-// Screen Navigation
-// ----------------------------
+// -------------------------
+// SCREEN HANDLER
+// -------------------------
 
 const screens = {
+    intro: document.getElementById("intro"),
     title: document.getElementById("titleScreen"),
     main: document.getElementById("mainQuest"),
     side: document.getElementById("sideQuest"),
     reward: document.getElementById("rewardScreen"),
+    treasure: document.getElementById("treasureScreen"),
     accepted: document.getElementById("acceptedScreen")
 };
 
 function showScreen(screen) {
-
-    Object.values(screens).forEach(s => {
-
-        s.classList.remove("active");
-
-    });
-
+    Object.values(screens).forEach(s => s.classList.remove("active"));
     screen.classList.add("active");
-
 }
 
-// ----------------------------
-// Fireflies
-// ----------------------------
+// -------------------------
+// FIRELIGHT PARTICLES
+// -------------------------
 
-const particleContainer = document.getElementById("particles");
+const particles = document.getElementById("particles");
 
-for(let i = 0; i < 80; i++){
+function spawnFireflies() {
+    for (let i = 0; i < 70; i++) {
+        const f = document.createElement("div");
+        f.className = "firefly";
 
-    const firefly = document.createElement("div");
+        f.style.left = Math.random() * 100 + "vw";
+        f.style.animationDuration = (6 + Math.random() * 8) + "s";
+        f.style.animationDelay = Math.random() * 5 + "s";
 
-    firefly.className = "firefly";
-
-    firefly.style.left = Math.random()*100 + "vw";
-
-    firefly.style.animationDuration =
-        (6 + Math.random()*8) + "s";
-
-    firefly.style.animationDelay =
-        Math.random()*8 + "s";
-
-    particleContainer.appendChild(firefly);
-
+        particles.appendChild(f);
+    }
 }
 
-// ----------------------------
-// Begin Quest
-// ----------------------------
+// -------------------------
+// TYPEWRITER
+// -------------------------
 
-document
-.getElementById("startBtn")
-.addEventListener("click",()=>{
+function typeText(element, text, speed = 30) {
+    let i = 0;
+    element.textContent = "";
 
+    function type() {
+        if (i < text.length) {
+            element.textContent += text[i];
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+// -------------------------
+// INTRO FLOW
+// -------------------------
+
+window.addEventListener("load", () => {
+    spawnFireflies();
+
+    const introStory = document.getElementById("introStory");
+
+    typeText(
+        introStory,
+`A strange energy fills the air...
+
+A forgotten promise still lingers...
+
+Only one hero has been chosen...`
+    );
+});
+
+// Continue intro → title screen
+document.getElementById("continueIntro").addEventListener("click", () => {
+    showScreen(screens.title);
+});
+
+// -------------------------
+// TITLE → STORY
+// -------------------------
+
+document.getElementById("startQuest").addEventListener("click", () => {
     showScreen(screens.main);
-
 });
 
-// ----------------------------
-// Main Quest
-// ----------------------------
+// -------------------------
+// MAIN QUEST
+// -------------------------
 
-document
-.querySelectorAll(".choice")
-.forEach(button=>{
-
-    button.addEventListener("click",()=>{
-
-        state.meal = button.dataset.value;
-
+document.querySelectorAll(".meal").forEach(btn => {
+    btn.addEventListener("click", () => {
+        state.meal = btn.dataset.value;
         showScreen(screens.side);
-
     });
-
 });
 
-// ----------------------------
-// Side Quest
-// ----------------------------
+// -------------------------
+// SIDE QUEST
+// -------------------------
 
-document
-.querySelectorAll(".activity")
-.forEach(button=>{
-
-    button.addEventListener("click",()=>{
-
-        state.activity = button.dataset.value;
+document.querySelectorAll(".activity").forEach(btn => {
+    btn.addEventListener("click", () => {
+        state.activity = btn.dataset.value;
 
         const summary = document.getElementById("summary");
 
         summary.innerHTML = `
-
-            <p><strong>Main Quest</strong></p>
-
+            <p><strong>Main Quest:</strong></p>
             <p>${state.meal}</p>
-
             <br>
-
-            <p><strong>Side Quest</strong></p>
-
+            <p><strong>Side Quest:</strong></p>
             <p>${state.activity}</p>
-
         `;
 
         showScreen(screens.reward);
-
     });
-
 });
 
-// ----------------------------
-// Accept Quest
-// ----------------------------
+// -------------------------
+// ACCEPT QUEST → TREASURE CHEST
+// -------------------------
 
-document
-.getElementById("acceptQuest")
-.addEventListener("click",()=>{
+document.getElementById("acceptQuest").addEventListener("click", () => {
+    showScreen(screens.treasure);
+});
 
-    const finalSummary =
-        document.getElementById("finalSummary");
+// -------------------------
+// TREASURE CHEST REVEAL
+// -------------------------
 
-    finalSummary.innerHTML = `
+document.getElementById("treasureChest").addEventListener("click", () => {
 
-        <h2>Quest Accepted ✔</h2>
+    const final = document.getElementById("finalSummary");
 
-        <br>
-
-        <p><strong>Main Quest</strong></p>
-
+    final.innerHTML = `
+        <p><strong>Your Quest Path:</strong></p>
         <p>${state.meal}</p>
-
-        <br>
-
-        <p><strong>Side Quest</strong></p>
-
         <p>${state.activity}</p>
-
     `;
 
     showScreen(screens.accepted);
-
 });
