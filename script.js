@@ -166,3 +166,8 @@ document.getElementById("treasureChest").addEventListener("click", () => {
 
     showScreen(screens.accepted);
 });
+// Debug check (helps us catch issues fast)
+console.log("Game loaded:", {
+    introBtn: !!document.getElementById("continueIntro"),
+    startBtn: !!document.getElementById("startQuest")
+});
