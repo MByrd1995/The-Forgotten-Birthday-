@@ -34,7 +34,6 @@ function showScreen(screen) {
         screen.classList.add("active");
     }, 150);
 }
-}
 
 // -------------------------
 // FIRELIGHT PARTICLES
