@@ -1,0 +1,305 @@
+/* ======================================
+   THE FORGOTTEN BIRTHDAY
+   Fantasy Adventure Theme
+====================================== */
+
+:root{
+    --gold:#d8bf73;
+    --gold-light:#f3df9b;
+    --forest:#10281f;
+    --forest-dark:#08140f;
+    --panel:rgba(8,15,12,.88);
+    --text:#f5f2e8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+
+    font-family: Georgia, serif;
+
+    color:var(--text);
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top,#284837 0%,#10281f 45%,#050705 100%);
+}
+
+/* ---------- Fireflies ---------- */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.firefly{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#fff2a6;
+
+    box-shadow:0 0 10px #ffe88d;
+
+    animation:float linear infinite;
+
+}
+
+@keyframes float{
+
+    from{
+
+        transform:translateY(110vh);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    90%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(-10vh);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ---------- Screens ---------- */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.screen.active{
+
+    display:flex;
+
+}
+
+/* ---------- Main panel ---------- */
+
+.panel{
+
+    width:min(760px,92vw);
+
+    background:var(--panel);
+
+    border:2px solid rgba(216,191,115,.45);
+
+    border-radius:18px;
+
+    padding:45px;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 0 45px rgba(0,0,0,.6),
+        0 0 25px rgba(216,191,115,.15);
+
+    animation:fadeUp .5s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ---------- Typography ---------- */
+
+h1{
+
+    text-align:center;
+
+    color:var(--gold);
+
+    font-size:52px;
+
+    letter-spacing:2px;
+
+}
+
+h2{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:var(--gold-light);
+
+    font-weight:normal;
+
+}
+
+.story{
+
+    margin:35px auto;
+
+    max-width:520px;
+
+    text-align:center;
+
+    line-height:1.9;
+
+    opacity:.92;
+
+}
+
+.ending{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    line-height:1.8;
+
+    font-size:20px;
+
+}
+
+/* ---------- Buttons ---------- */
+
+button{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-family:inherit;
+
+    transition:.25s;
+
+}
+
+#startBtn,
+#acceptQuest{
+
+    background:linear-gradient(#3f7b58,#2f5f43);
+
+    color:white;
+
+}
+
+.choice,
+.activity{
+
+    background:#173225;
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 15px rgba(255,255,255,.15);
+
+}
+
+/* ---------- Summary ---------- */
+
+#summary,
+#finalSummary{
+
+    margin:30px 0;
+
+    text-align:center;
+
+    line-height:2;
+
+    font-size:22px;
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:700px){
+
+    h1{
+
+        font-size:36px;
+
+    }
+
+    .panel{
+
+        padding:28px;
+
+    }
+
+}
