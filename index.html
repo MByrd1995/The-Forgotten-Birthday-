@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forgotten Birthday</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="particles"></div>
+
+    <!-- ================= TITLE ================= -->
+
+    <section id="titleScreen" class="screen active">
+
+        <div class="panel">
+
+            <h1>The Forgotten Birthday</h1>
+
+            <h2>A New Quest Has Appeared</h2>
+
+            <p class="story">
+
+                Somewhere along the journey...
+
+                a Hero made a mistake.
+
+                Time cannot be turned back,
+
+                but perhaps another quest
+
+                can make things right.
+
+            </p>
+
+            <button id="startBtn">
+
+                Begin Quest
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= MAIN QUEST ================= -->
+
+    <section id="mainQuest" class="screen">
+
+        <div class="panel">
+
+            <h1>Main Quest</h1>
+
+            <h2>Choose Your Feast</h2>
+
+            <button class="choice" data-value="Ramen Village">
+
+                🍜 Ramen Village
+
+            </button>
+
+            <button class="choice" data-value="Sushi Harbor">
+
+                🍣 Sushi Harbor
+
+            </button>
+
+            <button class="choice" data-value="Japanese BBQ Shrine">
+
+                🔥 Japanese BBQ Shrine
+
+            </button>
+
+            <button class="choice" data-value="Let Fate Decide">
+
+                ✨ Let Fate Decide
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SIDE QUEST ================= -->
+
+    <section id="sideQuest" class="screen">
+
+        <div class="panel">
+
+            <h1>Side Quest</h1>
+
+            <h2>Choose Your Adventure</h2>
+
+            <button class="activity" data-value="Hidden Cocktail Bar">
+
+                🍸 Hidden Cocktail Bar
+
+            </button>
+
+            <button class="activity" data-value="Rooftop Lookout">
+
+                🌆 Rooftop Lookout
+
+            </button>
+
+            <button class="activity" data-value="Arcade Challenge">
+
+                🕹 Arcade Challenge
+
+            </button>
+
+            <button class="activity" data-value="Secret Speakeasy">
+
+                🗝 Secret Speakeasy
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= QUEST SUMMARY ================= -->
+
+    <section id="rewardScreen" class="screen">
+
+        <div class="panel">
+
+            <h1>Reward Unlocked</h1>
+
+            <h2>Your Quest Path</h2>
+
+            <div id="summary"></div>
+
+            <button id="acceptQuest">
+
+                Officially Accept Quest
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ACCEPTED ================= -->
+
+    <section id="acceptedScreen" class="screen">
+
+        <div class="panel">
+
+            <h1>Quest Accepted</h1>
+
+            <h2>Adventure Begins...</h2>
+
+            <div id="finalSummary"></div>
+
+            <p class="ending">
+
+                If you're open to it,
+
+                I'd like to make it up to you properly.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
