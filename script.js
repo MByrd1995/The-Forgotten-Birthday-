@@ -93,9 +93,13 @@ Only one hero has been chosen...`
 });
 
 // Continue intro → title screen
-document.getElementById("continueIntro").addEventListener("click", () => {
-    showScreen(screens.title);
-});
+const continueBtn = document.getElementById("continueIntro");
+
+if (continueBtn) {
+    continueBtn.addEventListener("click", () => {
+        showScreen(screens.title);
+    });
+}
 
 // -------------------------
 // TITLE → STORY
