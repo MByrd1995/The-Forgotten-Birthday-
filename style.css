@@ -1,15 +1,14 @@
-/* ======================================
+/* =========================================
    THE FORGOTTEN BIRTHDAY
-   Fantasy Adventure Theme
-====================================== */
+   GAME STYLE OVERHAUL
+========================================= */
 
 :root{
-    --gold:#d8bf73;
-    --gold-light:#f3df9b;
-    --forest:#10281f;
-    --forest-dark:#08140f;
-    --panel:rgba(8,15,12,.88);
-    --text:#f5f2e8;
+    --gold:#d9c07a;
+    --goldGlow:#ffe9a6;
+    --dark:#070b10;
+    --panel:rgba(10,14,18,.88);
+    --text:#f3f0e6;
 }
 
 *{
@@ -18,288 +17,190 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
-}
-
 body{
-
-    font-family: Georgia, serif;
-
-    color:var(--text);
-
-    overflow:hidden;
-
+    font-family: 'Cinzel', Georgia, serif;
     background:
-        radial-gradient(circle at top,#284837 0%,#10281f 45%,#050705 100%);
+        radial-gradient(circle at top,#1f3a2d 0%,#0b1412 40%,#05070a 100%);
+    color:var(--text);
+    overflow:hidden;
 }
 
-/* ---------- Fireflies ---------- */
+/* =========================
+   PARTICLES (FIRELIGHT)
+========================= */
 
 #particles{
-
     position:fixed;
-
     inset:0;
-
-    overflow:hidden;
-
     pointer-events:none;
-
 }
 
 .firefly{
-
     position:absolute;
-
     width:4px;
-
     height:4px;
-
     border-radius:50%;
-
-    background:#fff2a6;
-
-    box-shadow:0 0 10px #ffe88d;
-
-    animation:float linear infinite;
-
+    background:#fff2b0;
+    box-shadow:0 0 12px #ffeaa0;
+    animation:rise linear infinite;
 }
 
-@keyframes float{
-
+@keyframes rise{
     from{
-
         transform:translateY(110vh);
-
         opacity:0;
-
     }
-
-    10%{
-
-        opacity:1;
-
-    }
-
-    90%{
-
-        opacity:1;
-
-    }
-
+    10%{opacity:1;}
+    90%{opacity:1;}
     to{
-
         transform:translateY(-10vh);
-
         opacity:0;
-
     }
-
 }
 
-/* ---------- Screens ---------- */
+/* =========================
+   SCREEN SYSTEM
+========================= */
 
 .screen{
-
     position:absolute;
-
     inset:0;
-
     display:none;
-
     justify-content:center;
-
     align-items:center;
-
     padding:20px;
-
 }
 
 .screen.active{
-
     display:flex;
-
 }
 
-/* ---------- Main panel ---------- */
+/* =========================
+   PANELS
+========================= */
 
-.panel{
-
-    width:min(760px,92vw);
-
+.panel,
+.titlePanel,
+.storyPanel,
+.treasurePanel{
+    width:min(800px,92vw);
     background:var(--panel);
-
-    border:2px solid rgba(216,191,115,.45);
-
+    border:2px solid rgba(217,192,122,.35);
     border-radius:18px;
-
-    padding:45px;
-
-    backdrop-filter:blur(8px);
-
+    padding:40px;
+    text-align:center;
     box-shadow:
-        0 0 45px rgba(0,0,0,.6),
-        0 0 25px rgba(216,191,115,.15);
-
+        0 0 40px rgba(0,0,0,.7),
+        0 0 20px rgba(255,233,166,.1);
+    backdrop-filter:blur(10px);
     animation:fadeUp .5s ease;
-
 }
 
 @keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(25px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-/* ---------- Typography ---------- */
+/* =========================
+   TEXT
+========================= */
 
 h1{
-
-    text-align:center;
-
+    font-size:54px;
     color:var(--gold);
-
-    font-size:52px;
-
-    letter-spacing:2px;
-
+    letter-spacing:3px;
 }
 
 h2{
-
     margin-top:10px;
-
-    text-align:center;
-
-    color:var(--gold-light);
-
+    color:var(--goldGlow);
     font-weight:normal;
-
 }
 
-.story{
-
-    margin:35px auto;
-
-    max-width:520px;
-
-    text-align:center;
-
-    line-height:1.9;
-
-    opacity:.92;
-
-}
-
-.ending{
-
-    margin-top:35px;
-
-    text-align:center;
-
+p{
     line-height:1.8;
-
-    font-size:20px;
-
+    margin-top:20px;
 }
 
-/* ---------- Buttons ---------- */
+/* =========================
+   TYPEWRITER AREA
+========================= */
+
+.typewriter{
+    min-height:80px;
+    margin-top:25px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
 
 button{
-
     width:100%;
-
-    margin-top:18px;
-
-    padding:16px;
-
+    margin-top:15px;
+    padding:15px;
     border:none;
-
     border-radius:12px;
-
+    font-size:16px;
     cursor:pointer;
-
-    font-size:18px;
-
+    transition:.2s;
     font-family:inherit;
-
-    transition:.25s;
-
-}
-
-#startBtn,
-#acceptQuest{
-
-    background:linear-gradient(#3f7b58,#2f5f43);
-
-    color:white;
-
-}
-
-.choice,
-.activity{
-
-    background:#173225;
-
-    color:white;
-
-    border:1px solid rgba(255,255,255,.08);
-
 }
 
 button:hover{
-
     transform:translateY(-2px);
-
-    box-shadow:0 0 15px rgba(255,255,255,.15);
-
 }
 
-/* ---------- Summary ---------- */
+#startQuest,
+#continueIntro,
+#continueStory,
+#acceptQuest{
+    background:linear-gradient(#3b6b4f,#284a36);
+    color:white;
+}
+
+.meal,
+.activity{
+    background:#14261f;
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+   SUMMARY
+========================= */
 
 #summary,
 #finalSummary{
-
-    margin:30px 0;
-
-    text-align:center;
-
+    margin-top:25px;
+    font-size:20px;
     line-height:2;
-
-    font-size:22px;
-
 }
 
-/* ---------- Mobile ---------- */
+/* =========================
+   TREASURE CHEST
+========================= */
+
+#treasureChest{
+    font-size:60px;
+    margin:25px 0;
+    cursor:pointer;
+    animation:shake 1.5s infinite;
+}
+
+@keyframes shake{
+    0%{transform:rotate(0);}
+    25%{transform:rotate(3deg);}
+    50%{transform:rotate(-3deg);}
+    75%{transform:rotate(2deg);}
+    100%{transform:rotate(0);}
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
-
-    h1{
-
-        font-size:36px;
-
-    }
-
-    .panel{
-
-        padding:28px;
-
-    }
-
+    h1{font-size:36px;}
+    .panel{padding:25px;}
 }
